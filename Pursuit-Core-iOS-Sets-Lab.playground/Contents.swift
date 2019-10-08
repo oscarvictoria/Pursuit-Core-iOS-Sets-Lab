@@ -8,11 +8,12 @@ import UIKit
 
 let numbers = [1,1,2,4,4,4,6,6,7,8]
 
-var numbersWithNoDuplicates = [Int]()
+var numbersWithNoDuplicates = Array(Set(numbers)).sorted()
 
-// Your code here
 
-//assert(numbersWithNoDuplicates == [1,2,4,6,7,8], "Was expecting [1,2,4,6,7,8], but got \(numbersWithNoDuplicates)")
+
+
+assert(numbersWithNoDuplicates == [1,2,4,6,7,8], "Was expecting [1,2,4,6,7,8], but got \(numbersWithNoDuplicates)")
 
 // Questions Two
 
@@ -20,11 +21,22 @@ var numbersWithNoDuplicates = [Int]()
 
 let scores = [1, 77, 83, 32, 77, 77, 83, 32, 99]
 
-var scoresThatAppearOnce = [Int]()
+var visitedNum: [Int] = []
+var scoresThatAppearOnce: [Int] = []
+for num in scores {
+  if !visitedNum.contains(num) {
+      scoresThatAppearOnce.append(num)
+      visitedNum.append(num)
+  } else {
+      if let index = scoresThatAppearOnce.firstIndex(of: num) {
+          scoresThatAppearOnce.remove(at: index)
+      }
+  }
+}
+print(scoresThatAppearOnce)
 
-// Your code here
 
-//assert(scoresThatAppearOnce == [1, 99], "Was expecting [1, 99], but got \(scoresThatAppearOnce)")
+assert(scoresThatAppearOnce == [1, 99], "Was expecting [1, 99], but got \(scoresThatAppearOnce)")
 
 // Question Three
 
@@ -35,24 +47,21 @@ var scoresThatAppearOnce = [Int]()
 let arrOne = [1,2,3,4,5]
 let arrTwo = [3,4,5,6,7]
 
-var arrThree: [Int] = []
+var arrThree = Array(Set(arrOne + arrTwo)).sorted()
 
-// Your code here
-
-//assert(arrThree == [1,2,3,4,5,6,7], "Was expecting [1,2,3,4,5,6,7], but got \(arrThree)")
+assert(arrThree == [1,2,3,4,5,6,7], "Was expecting [1,2,3,4,5,6,7], but got \(arrThree)")
 
 // b.
 
 // Given arrFour and arrFive, create a variable arrSix with is equal to the INTERSECTION of arrFour and arrFive.  If should not contain any duplicate elements.  Sort arrSix from smallest to greatest.
 
-let arrFour = [1,2,3,4,5]
-let arrFive = [3,4,5,6,7]
+let arrFour: Set = [1,2,3,4,5]
+let arrFive: Set = [3,4,5,6,7]
 
-var arrSix: [Int] = []
+var arrSix = arrFour.intersection(arrFive)
 
-// Your code here
 
-//assert(arrSix == [3,4,5], "Was expecting [3,4,5], but got \(arrSix)")
+assert(arrSix == [3,4,5], "Was expecting [3,4,5], but got \(arrSix)")
 
 // Question Four
 
@@ -63,11 +72,12 @@ let numsTwo = [1, 2, 3, 4, 5, 6]
 let numsThree = [5, 6, 7, 8, 9, 10, 11, 12]
 let numsFour = [1, 3, 4, 5, 6, 7, 9]
 
-var allNumsWithNoDuplicates: [Int] = []
+var allNumsWithNoDuplicates = Array (Set(numsOne + numsTwo + numsThree + numsFour)).sorted()
 
-// Your code here
 
-//assert(allNumsWithNoDuplicates == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "Was expecting [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], but got \([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])")
+
+
+assert(allNumsWithNoDuplicates == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "Was expecting [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], but got \([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])")
 
 
 // Question Five
@@ -89,6 +99,8 @@ var strThreeIsPangram: Bool = false
 //assert(strOneIsPangram == true, "Was expecting true, but got \(strOneIsPangram)")
 //assert(strTwoIsPangram == false, "Was expecting false, but got \(strTwoIsPangram)")
 //assert(strThreeIsPangram == true, "Was expecting false, but got \(strThreeIsPangram)")
+
+
 
 
 
