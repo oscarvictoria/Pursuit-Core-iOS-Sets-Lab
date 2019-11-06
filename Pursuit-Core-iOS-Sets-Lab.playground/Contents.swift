@@ -6,12 +6,9 @@ import UIKit
 
 // Create a new array numbersWithNoDuplicates that has all of the elements from numbers without any duplicates.  It should be in the same order as the original.
 
-let numbers = [1,1,2,4,4,4,6,6,7,8]
+let numbers: Set = [1,1,2,4,4,4,6,6,7,8]
 
-var numbersWithNoDuplicates = Array(Set(numbers)).sorted()
-
-
-
+var numbersWithNoDuplicates = numbers
 
 assert(numbersWithNoDuplicates == [1,2,4,6,7,8], "Was expecting [1,2,4,6,7,8], but got \(numbersWithNoDuplicates)")
 
@@ -44,10 +41,10 @@ assert(scoresThatAppearOnce == [1, 99], "Was expecting [1, 99], but got \(scores
 
 // Given arrOne and arrTwo, create a variable arrThree which is equal to the UNION of arrOne and arrTwo.  It should not contain any duplicate elements.  Sort arrThree from smallest to greatest.
 
-let arrOne = [1,2,3,4,5]
-let arrTwo = [3,4,5,6,7]
+let arrOne: Set = [1,2,3,4,5]
+let arrTwo: Set = [3,4,5,6,7]
 
-var arrThree = Array(Set(arrOne + arrTwo)).sorted()
+var arrThree = arrOne.union(arrTwo).sorted()
 
 assert(arrThree == [1,2,3,4,5,6,7], "Was expecting [1,2,3,4,5,6,7], but got \(arrThree)")
 
@@ -58,7 +55,7 @@ assert(arrThree == [1,2,3,4,5,6,7], "Was expecting [1,2,3,4,5,6,7], but got \(ar
 let arrFour: Set = [1,2,3,4,5]
 let arrFive: Set = [3,4,5,6,7]
 
-var arrSix = arrFour.intersection(arrFive)
+var arrSix = arrFour.intersection(arrFive).sorted()
 
 
 assert(arrSix == [3,4,5], "Was expecting [3,4,5], but got \(arrSix)")
@@ -71,6 +68,9 @@ let numsOne = [2, 4, 5, 6, 8, 10, 12]
 let numsTwo = [1, 2, 3, 4, 5, 6]
 let numsThree = [5, 6, 7, 8, 9, 10, 11, 12]
 let numsFour = [1, 3, 4, 5, 6, 7, 9]
+
+
+
 
 var allNumsWithNoDuplicates = Array (Set(numsOne + numsTwo + numsThree + numsFour)).sorted()
 
